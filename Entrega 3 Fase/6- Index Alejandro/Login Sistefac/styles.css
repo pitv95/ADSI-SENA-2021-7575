@@ -1,0 +1,91 @@
+body,
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1b1a12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box {
+    height: 30rem;
+    width: 30rem;
+    padding: 4rem;
+    background-color: #191919;
+    text-align: center;
+}
+
+.form-titulo {
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"],
+.form-box button[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem;
+    text-align: center;
+    border: .2rem solid darkorange;
+    ;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 2rem;
+    transition: .15s;
+}
+
+.form-box input[type="text"]:focus,
+.form-box input[type="password"]:focus {
+    width: 280px;
+    border-color: #FFFFFF;
+}
+
+.form-box button[type="submit"] {
+    background: none;
+    border: .1rem solid #af9605;
+    ;
+    cursor: pointer;
+}
+
+.form-box button[type="submit"]:hover {
+    background: darkorange;
+}
+
+.imagen {
+    display: grid;
+    grid-column: 2/1;
+}
+
+.recup,
+.regist {
+    display: flex;
+    color: white;
+    padding: 2rem;
+    justify-content: center;
+}
+
+.recup:hover,
+.regist:hover {
+    background-color: darkorange;
+    text-align: center;
+    color: #FFF;
+}
+
+.recup:visited,
+.regist:visited {
+    color: #FFF;
+}
+
+.pol {
+    color: #FFF
+}

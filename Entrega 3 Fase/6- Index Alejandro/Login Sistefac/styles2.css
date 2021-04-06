@@ -1,0 +1,137 @@
+:root {
+    --primario: #191919;
+}
+
+body {
+    background-color: var(--primario);
+    font-family: 'Merienda', cursive;
+    color: white;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+nav .imagen {
+    border-radius: 50%;
+    width: 100px;
+    float: right;
+    margin: -5.5rem 0 10rem 92rem;
+}
+
+.principal {
+    display: grid;
+    grid-template-columns: repeat(2, 4fr);
+    background-color: #EE7E26;
+}
+
+span {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/*img 
+{
+    width: 90px;
+    margin-top: -100px;
+    margin-left: 1495px;
+}
+*/
+
+.caja-3 {
+    display: grid;
+    grid-template-columns: repeat(2, 4fr);
+    color: #000;
+    border: none;
+}
+
+#cliente,
+#ced,
+#ubic,
+#cel,
+#recibo,
+#fecha,
+#pedido,
+#vencimiento {
+    padding: 0rem;
+    color: white;
+}
+
+#recibo,
+#fecha,
+#pedido,
+#vencimiento {
+    text-align: end;
+    font-weight: bold;
+}
+
+.contenedor {
+    margin: 15rem auto;
+    width: 600px;
+}
+
+.caja-2 {
+    background-color: #191919;
+    width: 100%;
+    text-align: left;
+    margin-top: 75px;
+}
+
+th,
+td {
+    border: solid 1px orange;
+}
+
+.total {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0rem 0rem 0rem 84.2rem;
+    width: 312.5px;
+    background-color: #191919;
+    font-size: 16px;
+}
+
+.pago {
+    display: flex;
+    background-color: #191919;
+    justify-self: center;
+    font-size: 48px;
+    margin: 0 0 0 45rem;
+    width: 200px;
+    height: 80px;
+    color: white;
+}
+
+.pago:hover {
+    cursor: pointer;
+    background-color: #EE7E26;
+    border-radius: 30%;
+}
+
+.pendiente {
+    display: flex;
+    background-color: #191919;
+    justify-self: center;
+    font-size: 48px;
+    margin: 0 0 0 43rem;
+    width: 300px;
+    height: 80px;
+    color: white;
+}
+
+.pendiente:hover {
+    cursor: pointer;
+    background-color: #EE7E26;
+    border-radius: 30%;
+}
+
+nav {
+    height: 150px;
+}
+
+.parrafo {
+    margin-top: 55px;
+    text-align: center;
+}

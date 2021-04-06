@@ -1,0 +1,149 @@
+mysql> CREATE DATABASE Proyecto;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE Proyecto;
+Database changed
+mysql> CREATE TABLE TBL_Proveedor(
+    -> RUT_Proveedor INT PRIMARY KEY,
+    -> Nombre_Proveedor VARCHAR(150) NOT NULL,
+    -> Web_Proveedor VARCHAR(100) NOT NULL,
+    -> Telefono_Proveedor VARCHAR(15) NOT NULL,
+    -> Direccion_Proveedor VARCHAR(250) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc TBL_Proveedor
+    -> ;
++---------------------+--------------+------+-----+---------+-------+
+| Field               | Type         | Null | Key | Default | Extra |
++---------------------+--------------+------+-----+---------+-------+
+| RUT_Proveedor       | int(11)      | NO   | PRI | NULL    |       |
+| Nombre_Proveedor    | varchar(150) | NO   |     | NULL    |       |
+| Web_Proveedor       | varchar(100) | NO   |     | NULL    |       |
+| Telefono_Proveedor  | varchar(15)  | NO   |     | NULL    |       |
+| Direccion_Proveedor | varchar(250) | NO   |     | NULL    |       |
++---------------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Categoria(
+    -> ID_Categoria INT PRIMARY KEY,
+    -> Nombre_Categoria VARCHAR(45) NOT NULL,
+    -> Descripcion_Categoria VARCHAR(250)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc TBL_Categoria;
++-----------------------+--------------+------+-----+---------+-------+
+| Field                 | Type         | Null | Key | Default | Extra |
++-----------------------+--------------+------+-----+---------+-------+
+| ID_Categoria          | int(11)      | NO   | PRI | NULL    |       |
+| Nombre_Categoria      | varchar(45)  | NO   |     | NULL    |       |
+| Descripcion_Categoria | varchar(250) | YES  |     | NULL    |       |
++-----------------------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Producto(
+    -> ID_Producto INT PRIMARY KEY,
+    -> Nombre_Producto VARCHAR(150) NOT NULL,
+    -> Descripcion_Producto VARCHAR(250) NOT NULL,
+    -> Precio_Producto BIGINT NOT NULL,
+    -> Stock_Producto INT NOT NULL,
+    -> ID_Categoria INT NOT NULL,
+    -> FOREIGN KEY(ID_Categoria) REFERENCES TBL_Categoria(ID_Categoria)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc TBL_Producto;
++----------------------+--------------+------+-----+---------+-------+
+| Field                | Type         | Null | Key | Default | Extra |
++----------------------+--------------+------+-----+---------+-------+
+| ID_Producto          | int(11)      | NO   | PRI | NULL    |       |
+| Nombre_Producto      | varchar(150) | NO   |     | NULL    |       |
+| Descripcion_Producto | varchar(250) | NO   |     | NULL    |       |
+| Precio_Producto      | bigint(20)   | NO   |     | NULL    |       |
+| Stock_Producto       | int(11)      | NO   |     | NULL    |       |
+| ID_Categoria         | int(11)      | NO   | MUL | NULL    |       |
++----------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Proveedor_Producto(
+    -> RUT_Proveedor INT,
+    -> FOREIGN KEY(RUT_Proveedor) REFERENCES TBL_Proveedor(RUT_Proveedor),
+    -> ID_Producto INT,
+    -> FOREIGN KEY(ID_Producto) REFERENCES TBL_Producto(ID_Producto),
+    -> );
+
+mysql> CREATE TABLE TBL_Proveedor_Producto(
+    -> RUT_Proveedor INT,
+    -> FOREIGN KEY(RUT_Proveedor) REFERENCES TBL_Proveedor(RUT_Proveedor),
+    -> ID_Producto INT,
+    -> FOREIGN KEY(ID_Producto) REFERENCES TBL_Producto(ID_Producto)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc TBL_Proveedor_Producto;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| RUT_Proveedor | int(11) | YES  | MUL | NULL    |       |
+| ID_Producto   | int(11) | YES  | MUL | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Venta(
+    -> ID_Venta INT PRIMARY KEY AUTO_INCREMENT,
+    -> Fecha_Venta DATE NOT NULL,
+    -> PrecioFinal_Venta VARCHAR(45) NOT NULL,
+    -> Descuento_Venta VARCHAR(45) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc TBL_Venta;
++-------------------+-------------+------+-----+---------+----------------+
+| Field             | Type        | Null | Key | Default | Extra          |
++-------------------+-------------+------+-----+---------+----------------+
+| ID_Venta          | int(11)     | NO   | PRI | NULL    | auto_increment |
+| Fecha_Venta       | date        | NO   |     | NULL    |                |
+| PrecioFinal_Venta | varchar(45) | NO   |     | NULL    |                |
+| Descuento_Venta   | varchar(45) | NO   |     | NULL    |                |
++-------------------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Cliente(
+    -> ID_Clente INT PRIMARY KEY,
+    -> Nombre_Cliente VARCHAR(150) NOT NULL,
+    -> Telefono_Cliente VARCHAR(15) NOT NULL,
+    -> Direccion_Cliente VARCHAR(250) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc TBL_Cliente
+    -> ;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| ID_Clente         | int(11)      | NO   | PRI | NULL    |       |
+| Nombre_Cliente    | varchar(150) | NO   |     | NULL    |       |
+| Telefono_Cliente  | varchar(15)  | NO   |     | NULL    |       |
+| Direccion_Cliente | varchar(250) | NO   |     | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> CREATE TABLE TBL_Cliente_Venta(
+    -> ID_Clente INT,
+    -> FOREIGN KEY(ID_Clente) REFERENCES TBL_Cliente(ID_Clente),
+    -> ID_Venta INT,
+    -> FOREIGN KEY(ID_Venta) REFERENCES TBL_Venta(ID_Venta)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc TBL_Cliente_Venta;
++-----------+---------+------+-----+---------+-------+
+| Field     | Type    | Null | Key | Default | Extra |
++-----------+---------+------+-----+---------+-------+
+| ID_Clente | int(11) | YES  | MUL | NULL    |       |
+| ID_Venta  | int(11) | YES  | MUL | NULL    |       |
++-----------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> exit
